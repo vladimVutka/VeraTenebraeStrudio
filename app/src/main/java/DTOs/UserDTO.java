@@ -6,11 +6,13 @@ public class UserDTO {
     private String middlename;
     private String lastname;
     private String username;
+    //private String password;
     private String email;
     private String role;
     private String imageURL;
     
     public UserDTO(String email, String firstname, String lastname, String username) {
+        //this.password = password;
         this.email = email;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -22,5 +24,6 @@ public class UserDTO {
     public String getLastname() { return lastname; }
     public String getUsername() { return username; }
     public String getEmail() { return email; }
-    public Long getId(){return id;}
+    public Long getId() { return id; }
+   // public String getPassword() {return password; }
 }
