@@ -8,14 +8,15 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.veratenebraestrudio.Projects.OpenProject;
 import com.example.veratenebraestrudio.databinding.CardLayoutBinding;
 
 import DataFiles.UserEntity;
 
 public class UserAdapter extends ListAdapter<UserEntity, UserAdapter.ViewHolder> {
-    private final OpenProfile listener;
+    private final OpenProject listener;
 
-    public UserAdapter(OpenProfile listener) {
+    public UserAdapter(OpenProject listener) {
         super(new UserDiff());
         this.listener = listener;
     }
@@ -38,9 +39,9 @@ public class UserAdapter extends ListAdapter<UserEntity, UserAdapter.ViewHolder>
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final CardLayoutBinding binding;
-        private final OpenProfile listener;
+        private final OpenProject listener;
 
-        public ViewHolder(CardLayoutBinding binding, OpenProfile listener) {
+        public ViewHolder(CardLayoutBinding binding, OpenProject listener) {
             super(binding.getRoot());
             this.binding = binding;
             this.listener = listener;
@@ -49,7 +50,7 @@ public class UserAdapter extends ListAdapter<UserEntity, UserAdapter.ViewHolder>
         public void bind(UserEntity item) {
            // binding.title.setText(item.getUsername());
             binding.discription.setOnClickListener(v -> {
-                listener.goToProfile(item.getUsername());
+                listener.goToProject(item.getUsername());
             });
         }
     }

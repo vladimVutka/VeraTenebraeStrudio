@@ -54,12 +54,12 @@ public class ProfileFragment extends Fragment implements OpenProject {
         RetrofitClient.getApiService().createUser(userDTO).enqueue(new Callback<UserDTO>() {
             @Override
             public void onResponse(Call<UserDTO> call, Response<UserDTO> response) {
-
+                Log.d("API1", "User created: " + response.body());
             }
 
             @Override
             public void onFailure(Call<UserDTO> call, Throwable t) {
-                Log.e("API", "Failed: " + t.getMessage());
+                Log.e("API1", "Failed: " + t.getMessage());
             }
         });
 
@@ -69,7 +69,7 @@ public class ProfileFragment extends Fragment implements OpenProject {
                 if (response.isSuccessful()) {
                     List<UserEntity> users = response.body();
                     for (UserEntity user : users) {
-                        Log.d("API", "User: " + user.getName());
+                        Log.d("API2", "User: " + user.getName());
                     }
                 }
             }
