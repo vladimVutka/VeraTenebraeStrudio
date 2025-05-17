@@ -40,7 +40,12 @@
         android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/lm"
@@ -58,6 +63,7 @@
             android:layout_marginLeft="44dp"
             android:layout_marginTop="110dp"
             android:text="TextView"
+            android:textColor="#000000"
             android:textSize="14sp" />
 
         <FrameLayout

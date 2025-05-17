@@ -1,5 +1,6 @@
 package com.example.veratenebraestrudio.Fragments.ProfileFragment;
 
+import com.example.veratenebraestrudio.Network.ThisUser;
 import com.example.veratenebraestrudio.Projects.OpenProject;
 import com.example.veratenebraestrudio.Projects.ProjectAdapter;
 
@@ -49,8 +50,11 @@ public class ProfileFragment extends Fragment implements OpenProject {
         testData();
         addListToRecycle();
         super.onViewCreated(view, saveInstances);
+        ThisUser thisUser = ThisUser.getInstance();
 
-        UserDTO userDTO = new UserDTO("Vladim", "victor", "privet", "da");
+        UserEntity user = thisUser.getCurrentUser();
+        binding.userName.setText(user.getUsername());
+        /*UserDTO userDTO = new UserDTO("Vladim","privat", "victor", "privet", "da", "yes");
         RetrofitClient.getApiService().createUser(userDTO).enqueue(new Callback<UserDTO>() {
             @Override
             public void onResponse(Call<UserDTO> call, Response<UserDTO> response) {
@@ -68,17 +72,15 @@ public class ProfileFragment extends Fragment implements OpenProject {
             public void onResponse(Call<List<UserEntity>> call, Response<List<UserEntity>> response) {
                 if (response.isSuccessful()) {
                     List<UserEntity> users = response.body();
-                    for (UserEntity user : users) {
-                        Log.d("API2", "User: " + user.getName());
-                    }
+
                 }
             }
 
             @Override
             public void onFailure(Call<List<UserEntity>> call, Throwable t) {
-                Log.e("API", "Failed: " + t.getMessage());
+                //Log.e("API", "Failed: " + t.getMessage());
             }
-    });
+    });*/
     }
 
     private void addListToRecycle()

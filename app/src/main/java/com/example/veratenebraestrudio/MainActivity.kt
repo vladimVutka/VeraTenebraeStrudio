@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         supportFragmentManager.beginTransaction()
-            .replace(android.R.id.content, ProfileFragment())
+            .replace(android.R.id.content, LoginFragment())
             .commit()
     }
 

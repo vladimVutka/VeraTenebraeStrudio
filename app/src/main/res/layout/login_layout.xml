@@ -81,15 +81,52 @@
 
     <TextView
         android:id="@+id/login_text"
-        android:layout_width="286dp"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="45dp"
         android:layout_marginTop="250dp"
         android:autoSizeMaxTextSize="120dp"
         android:autoSizeMinTextSize="14dp"
         android:autoSizeTextType="uniform"
         android:autoText="true"
+        android:gravity="center"
         android:text="Войти"
+        android:textColor="#000000"
+        android:fontFamily="@font/jsmath_cmbx10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/register"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="250dp"
+        android:autoSizeMaxTextSize="120dp"
+        android:autoSizeMinTextSize="14dp"
+        android:autoSizeTextType="uniform"
+        android:autoText="true"
+        android:fontFamily="@font/jsmath_cmbx10"
+        android:gravity="center"
+        android:text="Регистрация"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/vhod"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="250dp"
+        android:autoSizeMaxTextSize="120dp"
+        android:autoSizeMinTextSize="14dp"
+        android:autoSizeTextType="uniform"
+        android:autoText="true"
+        android:fontFamily="@font/jsmath_cmbx10"
+        android:gravity="center"
+        android:text="Вход"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

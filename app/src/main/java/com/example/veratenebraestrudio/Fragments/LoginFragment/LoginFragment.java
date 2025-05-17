@@ -11,6 +11,9 @@ import androidx.constraintlayout.motion.widget.Debug;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
 
+import com.example.veratenebraestrudio.Fragments.ProfileFragment.ProfileFragment;
+import com.example.veratenebraestrudio.Network.ThisUser;
+import com.example.veratenebraestrudio.R;
 import com.example.veratenebraestrudio.Services.ApiService;
 import com.example.veratenebraestrudio.Services.RetrofitClient;
 import com.example.veratenebraestrudio.adapters.Users.OpenProfile;
@@ -18,6 +21,7 @@ import com.example.veratenebraestrudio.databinding.LoginLayoutBinding;
 
 import DTOs.LoginDTO;
 import DTOs.UserDTO;
+import DataFiles.UserEntity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,17 +45,18 @@ public class LoginFragment extends Fragment implements OpenProfile
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String password = binding.inputPassword.toString();
-                String login = binding.inputLogin.toString();
-
+                String password = binding.inputPassword.getText().toString();
+                String login = binding.inputLogin.getText().toString();
                 goToProfile(login, password);
             }
         };
         binding.loginButton.setOnClickListener(onClickListener);
-
+        binding.loginText.setOnClickListener(onClickListener);
 
         super.onViewCreated(view, saveInstance);
     }
+
+
     private void setUIElements(){
         ConstraintSet constraintSet = new ConstraintSet();
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
@@ -81,15 +86,29 @@ public class LoginFragment extends Fragment implements OpenProfile
         constraintSet.connect(binding.loginButton.getId(), ConstraintSet.START, binding.loginFieldView.getId(), constraintSet.START, 25);
         constraintSet.connect(binding.loginButton.getId(), ConstraintSet.END, binding.loginFieldView.getId(), constraintSet.END, 25);
         //
-        constraintSet.connect(binding.loginText.getId(), ConstraintSet.TOP, binding.loginFieldView.getId(), constraintSet.TOP, 445);
-        constraintSet.connect(binding.loginText.getId(), ConstraintSet.START, binding.loginFieldView.getId(), constraintSet.START, 25);
-        constraintSet.connect(binding.loginText.getId(), ConstraintSet.END, binding.loginFieldView.getId(), constraintSet.END, 25);
+        constraintSet.connect(binding.loginText.getId(), ConstraintSet.TOP, binding.loginButton.getId(), constraintSet.TOP, 15);
+        constraintSet.connect(binding.loginText.getId(), ConstraintSet.START, binding.loginButton.getId(), constraintSet.START, 75);
+        constraintSet.connect(binding.loginText.getId(), ConstraintSet.END, binding.loginButton.getId(), constraintSet.END, 75);
+        constraintSet.connect(binding.loginText.getId(), ConstraintSet.BOTTOM, binding.loginButton.getId(), constraintSet.BOTTOM, 15);
+        //
+        constraintSet.connect(binding.vhod.getId(), ConstraintSet.START, binding.loginFieldView.getId(), ConstraintSet.START, 52);
+        constraintSet.connect(binding.vhod.getId(), ConstraintSet.END, binding.loginFieldView.getId(), ConstraintSet.END, 486);
+        constraintSet.connect(binding.vhod.getId(), ConstraintSet.TOP, binding.loginFieldView.getId(), ConstraintSet.TOP, 54);
+        constraintSet.connect(binding.vhod.getId(), ConstraintSet.BOTTOM, binding.loginFieldView.getId(), ConstraintSet.BOTTOM, 495);
+        //
+        constraintSet.connect(binding.register.getId(), ConstraintSet.START, binding.loginFieldView.getId(), ConstraintSet.START, 286);
+        constraintSet.connect(binding.register.getId(), ConstraintSet.END, binding.loginFieldView.getId(), ConstraintSet.END, 72);
+        constraintSet.connect(binding.register.getId(), ConstraintSet.TOP, binding.loginFieldView.getId(), ConstraintSet.TOP, 54);
+        constraintSet.connect(binding.register.getId(), ConstraintSet.BOTTOM, binding.loginFieldView.getId(), ConstraintSet.BOTTOM, 495);
 
         Debug.logStack("disp","" + displayMetrics.widthPixels/12, 1);
         constraintSet.applyTo(binding.loginLayout);
     }
 
+
     public void goToProfile(String login, String password){
+
+        Debug.logStack("gyu", "3", 1);
         LoginDTO loginDTO = new LoginDTO(login, password);
         Call<UserDTO> call = apiService.login(loginDTO);
         call.enqueue(new Callback<UserDTO>() {
@@ -98,12 +117,19 @@ public class LoginFragment extends Fragment implements OpenProfile
                 if(response.isSuccessful()){
                     UserDTO user = response.body();
                     Debug.logStack("gyu", "yes", 1);
+                    ThisUser thisUser = ThisUser.getInstance();
+                    UserEntity userEntity = user.toUserEntity();
+                    thisUser.setCurrentUser(userEntity);
+                    getParentFragmentManager().beginTransaction()
+                            .replace(R.id.login_layout, new ProfileFragment())
+                            .addToBackStack(null)
+                            .commit();
                 }
             }
 
             @Override
             public void onFailure(Call<UserDTO> call, Throwable t) {
-
+                Debug.logStack("gyu", "no", 1);
             }
         });
     }
