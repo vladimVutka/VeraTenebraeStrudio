@@ -24,6 +24,8 @@ public class UserEntity {
         this.imageurl = imageurl;
         this.role = role;
     }
+
+
     public String getName()
     {
         return firstname;
@@ -37,4 +39,8 @@ public class UserEntity {
         {
         return userId;
     }
+
+    public String getImageurl() {return imageurl;}
+
+
 }

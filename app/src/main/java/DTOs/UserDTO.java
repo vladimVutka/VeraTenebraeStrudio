@@ -11,9 +11,9 @@ public class UserDTO {
     private String email;
     private String password;
     private String role;
-    private String imageurl;
+    private String imageUrl;
 
-    public UserDTO(String email, String password, String firstname, String middlename, String lastname, String username, String role, String imageurl) {
+    public UserDTO(String email, String password, String firstname, String middlename, String lastname, String username, String role, String imageUrl) {
         this.password = password;
         this.email = email;
         this.firstname = firstname;
@@ -21,7 +21,7 @@ public class UserDTO {
         this.username = username;
         this.middlename = middlename;
         this.role = role;
-        this.imageurl = imageurl;
+        this.imageUrl = imageUrl;
     }
 
     public UserDTO(String email, String password, String firstname, String middlename, String lastname, String username) {
@@ -32,6 +32,11 @@ public class UserDTO {
         this.username = username;
         this.middlename = middlename;
     }
+    public UserDTO(String username, String email, String password){
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 
     public UserEntity toUserEntity() {
         return new UserEntity(this.username,
@@ -41,7 +46,7 @@ public class UserDTO {
                 this.lastname,
                 this.id,
                 this.role,
-                this.imageurl);
+                this.imageUrl);
     }
 
     public String getFirstname() { return firstname; }
@@ -51,5 +56,14 @@ public class UserDTO {
     public String getMiddlename() { return middlename; }
     public String getPassword() {return password; }
     public String getRole() { return  role; }
-    public String getImageurl() { return  imageurl; }
+    public String getImageurl() { return  imageUrl; }
+
+    public void setFirstname(String firstname) { this.firstname = firstname; }
+    public void setLastname(String lastname) { this.lastname = lastname; }
+    public void setUsername(String username) { this.username = username; }
+    public void setEmail(String email) { this.email = email; }
+    public void setMiddlename(String middlename) { this.middlename = middlename; }
+    public void setPassword(String password) {this.password = password; }
+    public void setRole(String role) { this.role = role; }
+    public void setImageUrl(String imageurl) { this.imageUrl = imageurl; }
 }

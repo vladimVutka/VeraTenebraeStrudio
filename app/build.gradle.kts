@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.veratenebraestrudio"
+    namespace = "com.example.veratenebraestudio"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.veratenebraestrudio"
+        applicationId = "com.example.veratenebraestudio"
         minSdk = 34
         targetSdk = 35
         versionCode = 1
@@ -41,7 +41,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
