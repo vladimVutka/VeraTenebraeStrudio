@@ -41,7 +41,7 @@ public class LoginFragment extends Fragment implements OpenProfile
         return binding.getRoot();
     }
     public void onViewCreated(View view, Bundle saveInstance){
-        setUIElements();
+        //setUIElements();
         View.OnClickListener onClickRegister = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,8 +111,7 @@ public class LoginFragment extends Fragment implements OpenProfile
         constraintSet.connect(binding.register.getId(), ConstraintSet.TOP, binding.loginFieldView.getId(), ConstraintSet.TOP, 54);
         constraintSet.connect(binding.register.getId(), ConstraintSet.BOTTOM, binding.loginFieldView.getId(), ConstraintSet.BOTTOM, 495);
 
-        Debug.logStack("disp","" + displayMetrics.widthPixels/12, 1);
-        constraintSet.applyTo(binding.loginLayout);
+        Debug.logStack("disp","" + displayMetrics.widthPixels/12, 1);//constraintSet.applyTo(binding.loginLayout);
     }
 
 

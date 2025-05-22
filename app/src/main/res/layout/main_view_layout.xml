@@ -23,8 +23,9 @@
         android:layout_width="0dp"
         android:layout_height="136dp"
         android:scaleType="fitXY"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/backGround"
+        app:layout_constraintStart_toStartOf="@+id/backGround"
+        app:layout_constraintTop_toTopOf="@+id/backGround"
         app:srcCompat="@drawable/backcard" />
 
     <ImageView
@@ -32,6 +33,9 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/userBack"
+        app:layout_constraintEnd_toEndOf="@+id/userBack"
+        app:layout_constraintHorizontal_bias="0.03"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_background" />
@@ -44,8 +48,12 @@
         android:textColor="#000000"
         android:textColorHint="#000000"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/avatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toEndOf="@+id/avatar"
+        app:layout_constraintTop_toTopOf="@+id/avatar"
+        app:layout_constraintVertical_bias="0.13999999" />
 
     <LinearLayout
         android:id="@+id/lm"

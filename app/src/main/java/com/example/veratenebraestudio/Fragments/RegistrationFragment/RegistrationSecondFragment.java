@@ -83,7 +83,7 @@ public class RegistrationSecondFragment extends Fragment implements OpenLogin {
         imgbbApi = retrofit.create(ImgbbApi.class);
 
         binding.imageChooseButton.setOnClickListener(v -> openImageChooser());
-        setUIElements();
+        //setUIElements();
         binding.registerButton.setOnClickListener(v -> register());
         binding.registerText.setOnClickListener(v -> register());
     }
@@ -111,51 +111,11 @@ public class RegistrationSecondFragment extends Fragment implements OpenLogin {
                 }
             });
         }
+        else{
+            Toast.makeText(getContext(), "Необходимо заполнить все поля!", Toast.LENGTH_SHORT).show();
+        }
 
     }
-    private void setUIElements() {
-        ConstraintSet constraintSet = new ConstraintSet();
-        constraintSet.clone(binding.registartion2MainView);
-
-        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-
-        constraintSet.connect(binding.regBackField.getId(), ConstraintSet.TOP, binding.registartion2MainView.getId(), ConstraintSet.TOP, 450);
-        constraintSet.connect(binding.regBackField.getId(), ConstraintSet.START, binding.registartion2MainView.getId(), ConstraintSet.START, displayMetrics.widthPixels / 24);
-        constraintSet.connect(binding.regBackField.getId(), ConstraintSet.END, binding.registartion2MainView.getId(), ConstraintSet.END, displayMetrics.widthPixels / 24);
-        //
-        constraintSet.connect(binding.veraTenebrae.getId(), ConstraintSet.TOP, binding.registartion2MainView.getId(), ConstraintSet.TOP, 125);
-        constraintSet.connect(binding.veraTenebrae.getId(), ConstraintSet.START, binding.registartion2MainView.getId(), ConstraintSet.START, displayMetrics.widthPixels / 8);
-        constraintSet.connect(binding.veraTenebrae.getId(), ConstraintSet.END, binding.registartion2MainView.getId(), ConstraintSet.END, displayMetrics.widthPixels / 8);
-        //
-        constraintSet.connect(binding.inputFirstname.getId(), ConstraintSet.TOP, binding.regBackField.getId(), ConstraintSet.TOP, 35);
-        constraintSet.connect(binding.inputFirstname.getId(), ConstraintSet.START, binding.regBackField.getId(), ConstraintSet.START, 35);
-        constraintSet.connect(binding.inputFirstname.getId(), ConstraintSet.END, binding.regBackField.getId(), ConstraintSet.END, 35);
-
-        constraintSet.connect(binding.inputLastname.getId(), ConstraintSet.TOP, binding.regBackField.getId(), ConstraintSet.TOP, 165);
-        constraintSet.connect(binding.inputLastname.getId(), ConstraintSet.START, binding.regBackField.getId(), ConstraintSet.START, 35);
-        constraintSet.connect(binding.inputLastname.getId(), ConstraintSet.END, binding.regBackField.getId(), ConstraintSet.END, 35);
-
-        constraintSet.connect(binding.inputMiddlename.getId(), ConstraintSet.TOP, binding.regBackField.getId(), ConstraintSet.TOP, 295);
-        constraintSet.connect(binding.inputMiddlename.getId(), ConstraintSet.START, binding.regBackField.getId(), ConstraintSet.START, 35);
-        constraintSet.connect(binding.inputMiddlename.getId(), ConstraintSet.END, binding.regBackField.getId(), ConstraintSet.END, 35);
-        //
-        constraintSet.connect(binding.imageChooseButton.getId(), ConstraintSet.TOP, binding.regBackField.getId(), ConstraintSet.TOP, 395);
-        constraintSet.connect(binding.imageChooseButton.getId(), ConstraintSet.START, binding.regBackField.getId(), ConstraintSet.START, 35);
-        constraintSet.connect(binding.imageChooseButton.getId(), ConstraintSet.END, binding.regBackField.getId(), ConstraintSet.END, 35);
-        constraintSet.connect(binding.imageChooseButton.getId(), ConstraintSet.BOTTOM, binding.regBackField.getId(), ConstraintSet.BOTTOM, 135);
-        //
-        constraintSet.connect(binding.registerButton.getId(), ConstraintSet.START, binding.regBackField.getId(), ConstraintSet.START, 295);
-        constraintSet.connect(binding.registerButton.getId(), ConstraintSet.END, binding.regBackField.getId(), ConstraintSet.END, 35);
-        constraintSet.connect(binding.registerButton.getId(), ConstraintSet.BOTTOM, binding.regBackField.getId(), ConstraintSet.BOTTOM, 35);
-        //
-        constraintSet.connect(binding.registerText.getId(), ConstraintSet.TOP, binding.registerButton.getId(), constraintSet.TOP, 15);
-        constraintSet.connect(binding.registerText.getId(), ConstraintSet.START, binding.registerButton.getId(), constraintSet.START, 75);
-        constraintSet.connect(binding.registerText.getId(), ConstraintSet.END, binding.registerButton.getId(), constraintSet.END, 75);
-        constraintSet.connect(binding.registerText.getId(), ConstraintSet.BOTTOM, binding.registerButton.getId(), constraintSet.BOTTOM, 15);
-        //
-        constraintSet.applyTo(binding.registartion2MainView);
-    }
-
     @Override
 
     public void openLogin(){
@@ -183,7 +143,6 @@ public class RegistrationSecondFragment extends Fragment implements OpenLogin {
             if (data != null && data.getData() != null) {
                 imageUri = data.getData();
                 try {
-                    // Преобразуем изображение в квадрат и устанавливаем в imageChooseButton
                     Bitmap squareBitmap = getSquareBitmap(imageUri);
                     binding.imageChooseButton.setImageBitmap(squareBitmap);
                     uploadImageToImgBB(squareBitmap);

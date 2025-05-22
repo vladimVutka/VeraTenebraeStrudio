@@ -43,8 +43,7 @@ public class ProfileFragment extends Fragment implements OpenProject {
     @Override
     public void onViewCreated(View view, Bundle saveInstances)
     {
-        fixUI();
-        testData();
+        //fixUI();
         addListToRecycle();
         super.onViewCreated(view, saveInstances);
         ThisUser thisUser = ThisUser.getInstance();
@@ -53,20 +52,8 @@ public class ProfileFragment extends Fragment implements OpenProject {
         binding.userName.setText(user.getUsername());
         Picasso.get().load(user.getImageurl()).into(binding.avatar);
         Log.d("pic", user.getImageurl());
-        /*UserDTO userDTO = new UserDTO("Vladim","privat", "victor", "privet", "da", "yes");
-        RetrofitClient.getApiService().createUser(userDTO).enqueue(new Callback<UserDTO>() {
-            @Override
-            public void onResponse(Call<UserDTO> call, Response<UserDTO> response) {
-                Log.d("API1", "User created: " + response.body());
-            }
 
-            @Override
-            public void onFailure(Call<UserDTO> call, Throwable t) {
-                Log.e("API1", "Failed: " + t.getMessage());
-            }
-        });
-
-        RetrofitClient.getApiService().getUsers().enqueue(new Callback<List<UserEntity>>() {
+        /*.getApiService().getUsers().enqueue(new Callback<List<UserEntity>>() {
             @Override
             public void onResponse(Call<List<UserEntity>> call, Response<List<UserEntity>> response) {
                 if (response.isSuccessful()) {
@@ -89,7 +76,6 @@ public class ProfileFragment extends Fragment implements OpenProject {
         binding.rc.setAdapter(adapter);
 
         projectList.add(new ProjectEntity("Project 1", "Description 1", "Details 1"));
-        projectList.add(testData());
         adapter.submitList(projectList);
     }
 
@@ -128,18 +114,13 @@ public class ProfileFragment extends Fragment implements OpenProject {
             //ну времено засунем текст
             constraintSet.connect(binding.textView.getId(),  ConstraintSet.TOP, binding.fm.getId(), ConstraintSet.TOP, 0);
             //проверка работы
-            constraintSet.applyTo(binding.mainView);
+            //constraintSet.applyTo(binding.mainView);
             binding.mainView.requestLayout();
             binding.mainView.invalidate();
             Debug.logStack("f", String.format("%d", binding.scrollview.getLayoutParams().height), 5);
 
         }
         binding.textView.setText("Ghbdtn");
-    }
-
-    private ProjectEntity testData(){
-        ProjectEntity pE = new ProjectEntity("hello", "auf", "hi");
-        return pE;
     }
 
 

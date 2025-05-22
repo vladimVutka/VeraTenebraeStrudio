@@ -23,6 +23,7 @@
         android:layout_marginTop="75dp"
         android:elevation="9dp"
         android:text="Название проекта"
+        android:textColor="#000000"
         android:textColorLink="#C30000" />
 
     <androidx.cardview.widget.CardView
@@ -39,9 +40,9 @@
             app:srcCompat="@drawable/backcard" />
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/icon"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:layout_marginLeft="14dp"
             android:layout_marginTop="14dp"
             app:srcCompat="@drawable/rectanglegr" />

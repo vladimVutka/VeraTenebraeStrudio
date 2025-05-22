@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.veratenebraestudio.databinding.CardLayoutBinding;
+import com.squareup.picasso.Picasso;
 
 import DataFiles.ProjectEntity;
 
@@ -55,6 +56,7 @@ public class ProjectAdapter extends ListAdapter<ProjectEntity, ProjectAdapter.Vi
             binding.discription.setOnClickListener(v -> {
                 listener.goToProject(item._projectId());
             });
+            Picasso.get().load("https://clck.ru/3MDBC5").into(binding.icon);
         }
     }
             public static class ProjectDiff extends DiffUtil.ItemCallback<ProjectEntity> {
